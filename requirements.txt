@@ -1,6 +1,4 @@
-paddlepaddle
-paddlehub
-visualdl
-paddleseg
-paddlenlp
-paddleocr
+timm==0.4.12
+transformers
+fairscale==0.4.4
+pycocoevalcap
