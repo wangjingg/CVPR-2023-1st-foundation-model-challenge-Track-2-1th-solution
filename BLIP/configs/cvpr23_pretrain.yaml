@@ -1,0 +1,32 @@
+data_root: './datasets_pretrain/'
+
+image_list: ['dataset_gen_person/gen_img_padding', 'HyperVID-Dataset/data_brand_padding', 
+            'train_a_10_padding/', 'vehicle_data/part1_data_padding', 'vehicle_data/part2_data_padding']
+
+label_list: ['dataset_gen_person/combine_label.json', 'HyperVID-Dataset/label.json',
+            'train_a_10_prompt_result.json', 'vehicle_data/part1_label.json', 'vehicle_data/part2_label.json']
+
+dataset: 'cvpr23_pretrain'
+
+pretrained: '/home/aistudio/data/data218656/blip_model_large.pth'
+
+vit: 'large'
+batch_size_train: 24
+batch_size_test: 6
+vit_grad_ckpt: True
+vit_ckpt_layer: 12
+init_lr: 5e-6
+
+image_size: 224
+queue_size: 57600
+alpha: 0.4
+k_test: 20
+negative_all_rank: True
+
+# optimizer
+weight_decay: 0.0005
+min_lr: 0
+max_epoch: 20
+early_stop_epoch: 9
+
+

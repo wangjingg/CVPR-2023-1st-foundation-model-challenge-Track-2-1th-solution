@@ -1,0 +1,20 @@
+alpha: 0.4
+ann_path: {train: /home/aistudio/data/data218656/annots/train_label.json, val: /home/aistudio/data/data218656/annots/val_label.json}
+batch_size_test: 6
+batch_size_train: 24
+dataset: cvpr23_finetune
+early_stop_epoch: 3
+image_size: 224
+image_train: /home/aistudio/data/data218656/train/train_images/
+image_val: /home/aistudio/data/data218656/val/val_images/
+init_lr: 5e-06
+k_test: 10
+max_epoch: 20
+min_lr: 0
+negative_all_rank: true
+pretrained: /home/aistudio/data/data218656/blip_pretrained.pth
+queue_size: 57600
+vit: large
+vit_ckpt_layer: 12
+vit_grad_ckpt: true
+weight_decay: 0.005

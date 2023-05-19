@@ -1,0 +1,29 @@
+image_train: '/home/aistudio/data/data218656/train/train_images/'
+image_val: '/home/aistudio/data/data218656/val/val_images/'
+
+ann_path: {'train': '/home/aistudio/data/data218656/annots/train_label.json', 
+            'val': '/home/aistudio/data/data218656/annots/val_label.json'}
+dataset: 'cvpr23_finetune'
+
+# set pretrained as a file path or an url
+pretrained: '/home/aistudio/data/data218656/blip_pretrained.pth'
+
+vit: 'large'
+batch_size_train: 24
+batch_size_test: 6
+vit_grad_ckpt: True
+vit_ckpt_layer: 12
+init_lr: 5e-6
+
+image_size: 224
+queue_size: 57600
+alpha: 0.4
+k_test: 10
+negative_all_rank: True
+
+# optimizer
+weight_decay: 0.005
+min_lr: 0
+max_epoch: 20
+early_stop_epoch: 3
+

@@ -1,0 +1,1 @@
+python -m torch.distributed.run --nproc_per_node=4 /home/aistudio/work/BLIP/cvpr23_finetune.py --config /home/aistudio/work/BLIP/configs/cvpr23_finetune.yaml --output_dir /home/aistudio/work/BLIP/output/cvpr23_finetune
