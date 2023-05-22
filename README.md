@@ -21,6 +21,8 @@
 3.中文车辆品牌分词问题，例如BYD，分成BYD，其语义已经完全改变。采用prompt argumentation缓解此问题。\
 4.车辆，行人图像比例差异大，采用最大边padding缓解此问题。
 
+#### 比赛数据与模型权重下载地址：
+链接: https://pan.baidu.com/s/1N4cPxijlLPAA6_vti91hmQ 提取码: h2s2 
 
 ### 六、数据处理
 #### padding：
@@ -33,6 +35,12 @@
   type_prompt = The vehicle's model is\
   text = 原始txt + This is a vehicle + brand_prompt + type_prompt + color_prompt
  ##### 行人prompt增强方式：
+  将行人prompt分割为两个部分，作为新增prompt。\
+  例如：A male pedestrian is someone who walks on foot, is less than 18 years old, with his body facing the camera and carrying a backpack. He is in a shirt with short sleeves.\
+  新增结果分别为：\
+  text1 = A male pedestrian is someone who walks on foot, is less than 18 years old, with his body facing the camera and carrying a backpack. \
+  text2 = He is in a shirt with short sleeves.
+ 
 #### 图像数据增强：
 训练集使用RandomAugment，['Identity','AutoContrast','Brightness','Sharpness','Equalize','ShearX', 'ShearY', 'TranslateX', 'TranslateY']
 
@@ -61,11 +69,11 @@
 #### 微调阶段
 由于训练集和测试集车辆分布差异较大，为了降低灾难性遗忘和过拟合，采用较低的学习率和迭代次数。
 
-### 八、模型融合
+### 九、模型融合
 融合模型：BLIP-large + CLIP-H×3 共四个模型。\
 将BLIP ita输出与三个CLIP相似度输出融合，将融合后相似度top10输入BLIP itm头，利用BLIP itm头对top10进行重排序得到最终的相似度。
 
-### 九、注意事项
+### 十、注意事项
 1.由于存储不够，在训练之前请使用rm -r /home/aistudio/data/data218773 将A榜提交的checkpoint删除（重启会自动恢复）
 2.本工程基于V100 32GB *4，如果出现显存不够，可以尝试降低batch size，或者将amp修改为bf16或者fp16等
 3.ai studio和本地每个模型结果均有稍许不同，所以融合之后精度与提交结果可能存在稍许差异，可能原因是本地训练clip与blip为两个单独的虚拟环境，而本工程是统一的虚拟环境。
